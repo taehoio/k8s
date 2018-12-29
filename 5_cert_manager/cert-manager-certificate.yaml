@@ -1,0 +1,23 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: taeho-io-ingress-certs
+  namespace: istio-system
+spec:
+  # THIS SHOULD BE `istio-ingressgateway-certs` TO SUPPORT istio ingressgateway!
+  secretName: istio-ingressgateway-certs
+  issuerRef:
+    name: letsencrypt-production
+    #name: letsencrypt-staging
+    kind: ClusterIssuer
+  commonName: taeho.io
+  dnsNames:
+    - taeho.io
+    - "*.taeho.io"
+  acme:
+    config:
+      - dns01:
+          provider: cloud-dns-production
+        domains:
+          - taeho.io
+          - "*.taeho.io"
