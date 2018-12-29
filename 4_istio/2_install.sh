@@ -8,5 +8,8 @@ helm install istio-1.0.5/install/kubernetes/helm/istio \
     --set grafana.enabled=true \
     --set grafana.persist=true  \
     --set grafana.accessMode=ReadWriteOnce \
+    --set grafana.security.enabled=true \
+    --set telemetry-gateway.grafanaEnabled=true \
+    --set telemetry-gateway.prometheusEnabled=true \
     --set kiali.enabled=true \
     --set servicegraph.enabled=true
