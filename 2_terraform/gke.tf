@@ -21,15 +21,15 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 3
 }
 
-resource "google_container_node_pool" "primary_pool" {
-  name       = "primary-pool"
+resource "google_container_node_pool" "n1-standard-2-pool" {
+  name       = "n1-standard-2-pool"
   zone       = "${google_container_cluster.primary.zone}"
   cluster    = "${google_container_cluster.primary.name}"
   node_count = "3"
 
   node_config {
     preemptible  = true
-    machine_type = "n1-standard-1"
+    machine_type = "n1-standard-2"
 
     # To access all GCP services
     oauth_scopes = [
