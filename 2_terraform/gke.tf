@@ -17,7 +17,7 @@ resource "google_container_cluster" "primary" {
   name                     = "taeho-cluster"
   zone                     = "us-west1-a"
   remove_default_node_pool = true
-  min_master_version       = "1.11.6-gke.0"
+  min_master_version       = "1.11.5-gke.5"
   initial_node_count       = 3
 }
 
@@ -28,7 +28,7 @@ resource "google_container_node_pool" "n1-standard-1-pool" {
   node_count = "3"
 
   node_config {
-    preemptible  = true
+    #preemptible  = true
     machine_type = "n1-standard-1"
     disk_size_gb = 30
 
