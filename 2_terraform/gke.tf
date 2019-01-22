@@ -17,7 +17,7 @@ resource "google_container_cluster" "primary" {
   name                     = "taeho-cluster"
   zone                     = "us-west1-a"
   remove_default_node_pool = true
-  min_master_version       = "1.11.5-gke.5"
+  min_master_version       = "1.11.6-gke.2"
   initial_node_count       = 3
 }
 
