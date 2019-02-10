@@ -17,15 +17,17 @@ resource "google_container_cluster" "primary" {
   name                     = "taeho-cluster"
   zone                     = "us-west1-a"
   remove_default_node_pool = true
-  min_master_version       = "1.11.6-gke.2"
+  min_master_version       = "1.11.6-gke.6"
   initial_node_count       = 3
 }
 
-resource "google_container_node_pool" "n1-standard-1-pool" {
-  name       = "n1-standard-1-pool"
+resource "google_container_node_pool" "n1-standard-1-pool-2" {
+  name       = "n1-standard-1-pool-2"
   zone       = "${google_container_cluster.primary.zone}"
   cluster    = "${google_container_cluster.primary.name}"
+  version    = "1.11.6-gke.6"
   node_count = "3"
+
 
   node_config {
     #preemptible  = true
@@ -45,6 +47,6 @@ resource "google_container_node_pool" "n1-standard-1-pool" {
 
   management {
     auto_repair  = true
-    auto_upgrade = true
+    auto_upgrade = false
   }
 }
