@@ -17,7 +17,7 @@ resource "google_container_cluster" "primary" {
   name                     = "taeho-cluster"
   zone                     = "us-west1-a"
   remove_default_node_pool = true
-  min_master_version       = "1.12.5-gke.5"
+  min_master_version       = "1.12.6-gke.7"
   initial_node_count       = 3
 }
 
@@ -25,14 +25,16 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
   name       = "n1-standard-1-pool-1"
   zone       = "${google_container_cluster.primary.zone}"
   cluster    = "${google_container_cluster.primary.name}"
-  version    = "1.12.5-gke.5"
+  version    = "1.12.6-gke.7"
   node_count = "3"
-
 
   node_config {
     #preemptible  = true
     machine_type = "n1-standard-1"
     disk_size_gb = 30
+    metadata {
+      disable-legacy-endpoints = "true"
+    }
 
     # To access all GCP services
     oauth_scopes = [
