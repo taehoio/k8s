@@ -32,6 +32,7 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
     #preemptible  = true
     machine_type = "n1-standard-1"
     disk_size_gb = 30
+
     metadata {
       disable-legacy-endpoints = "true"
     }
@@ -44,7 +45,7 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
 
   autoscaling {
     min_node_count = 3
-    max_node_count = 10
+    max_node_count = 3
   }
 
   management {
