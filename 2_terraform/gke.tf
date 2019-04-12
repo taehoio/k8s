@@ -17,7 +17,7 @@ resource "google_container_cluster" "primary" {
   name                     = "taeho-cluster"
   zone                     = "us-west1-a"
   remove_default_node_pool = true
-  min_master_version       = "1.12.6-gke.7"
+  min_master_version       = "1.12.6-gke.10"
   initial_node_count       = 3
 }
 
@@ -25,7 +25,6 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
   name       = "n1-standard-1-pool-1"
   zone       = "${google_container_cluster.primary.zone}"
   cluster    = "${google_container_cluster.primary.name}"
-  version    = "1.12.6-gke.7"
   node_count = "3"
 
   node_config {
@@ -50,6 +49,6 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
 
   management {
     auto_repair  = true
-    auto_upgrade = false
+    auto_upgrade = true
   }
 }
