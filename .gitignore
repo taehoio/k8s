@@ -1,5 +1,5 @@
 2_terraform/gke-terraform-admin.json
-4_istio/istio-1.0.5
+4_istio/istio-1.1.2
 5_cert_manager/gcp-dns-admin.json
 7_cloud_sql/taeho-io-220708-cloudsql.json
 8_envs/taeho_envs.yaml

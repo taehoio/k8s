@@ -21,15 +21,15 @@ resource "google_container_cluster" "primary" {
   initial_node_count       = 3
 }
 
-resource "google_container_node_pool" "n1-standard-1-pool-1" {
-  name       = "n1-standard-1-pool-1"
+resource "google_container_node_pool" "n1-standard-2-pool-1" {
+  name       = "n1-standard-2-pool-1"
   zone       = "${google_container_cluster.primary.zone}"
   cluster    = "${google_container_cluster.primary.name}"
-  node_count = "3"
+  node_count = "2"
 
   node_config {
     #preemptible  = true
-    machine_type = "n1-standard-1"
+    machine_type = "n1-standard-2"
     disk_size_gb = 30
 
     metadata {
@@ -43,7 +43,7 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
   }
 
   autoscaling {
-    min_node_count = 3
+    min_node_count = 1
     max_node_count = 3
   }
 
@@ -52,3 +52,4 @@ resource "google_container_node_pool" "n1-standard-1-pool-1" {
     auto_upgrade = true
   }
 }
+
